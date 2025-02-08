@@ -1,54 +1,73 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ffebee;
-    color: #d32f2f;
+    font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #ffe4e1;
     margin: 0;
     padding: 0;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .container {
-    background-color: #ffffff;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.main-content {
+    background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  h1 {
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    color: black;
     font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-  }
-  
-  button {
-    background-color: #d32f2f;
+    font-weight: bold;
+    max-width: 100%;
+    overflow: visible;
+    white-space: normal;
+    text-overflow: clip;
+    word-wrap: break-word;
+}
+
+p.message {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #d63384;
+}
+
+.cute-cat {
+    max-width: 50%; /* Reduce size for better visibility */
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+button {
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 5px;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 30px;
     cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #b71c1c;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  #responseMessage {
-    font-size: 1.5rem;
-    margin-top: 20px;
-    color: #388e3c;
-  }
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    .cute-cat {
+        max-width: 60%; /* Further reduce size for smaller screens */
+    }
+}

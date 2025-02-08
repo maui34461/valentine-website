@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+    <div class="gallery-container">
+        <h1>Yehey! Thank you for being my Valentine! 💖</h1>
+        <p class="gratitude-message">I'm so happy to share these moments with you! Here are our memories together. 😊</p>
+        
+        <div class="photo-gallery">
+            <img src="assets/photo1.jpg" alt="Photo 1" class="gallery-photo">
+            <img src="assets/photo2.jpg" alt="Photo 2" class="gallery-photo">
+            <img src="assets/photo3.jpg" alt="Photo 3" class="gallery-photo">
+            <img src="assets/photo4.jpg" alt="Photo 4" class="gallery-photo">
+        </div>
+    </div>
+
+    <script>
+        // Create a canvas for drawing flowers
+        const canvas = document.createElement('canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        canvas.style.position = 'absolute';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.pointerEvents = 'none';
+        document.body.appendChild(canvas);
+
+        const ctx = canvas.getContext('2d');
+
+        function drawFlowerStepByStep(x, y, size, color, delay) {
+            setTimeout(() => {
+                ctx.fillStyle = color;
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        ctx.beginPath();
+                        ctx.ellipse(x + Math.cos((Math.PI * 2 * i) / 5) * size, 
+                                    y + Math.sin((Math.PI * 2 * i) / 5) * size, 
+                                    size * 0.6, size, 0, 0, 2 * Math.PI);
+                        ctx.fill();
+                    }, i * 150);
+                }
+                setTimeout(() => {
+                    ctx.beginPath();
+                    ctx.arc(x, y, size * 0.4, 0, 2 * Math.PI);
+                    ctx.fillStyle = 'yellow';
+                    ctx.fill();
+                }, 800);
+            }, delay);
+        }
+
+        function generateFlowers() {
+            for (let i = 0; i < 10; i++) {
+                let x = Math.random() * canvas.width;
+                let y = Math.random() * (canvas.height - 100) + 50; // Prevent blocking photos
+                let size = Math.random() * 15 + 5; // Adjusted size for better visibility
+                let colors = ['red', 'pink', 'purple', 'blue', 'orange'];
+                let color = colors[Math.floor(Math.random() * colors.length)];
+                drawFlowerStepByStep(x, y, size, color, i * 400);
+            }
+        }
+
+        generateFlowers();
+    </script>
+</body>
+</html>
